@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+      <link rel="stylesheet" type="text/css" href="{% static 'App/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+<header>
+    <nav class="#a1887f brown lighten-2">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center">Library</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'App:index' %}"><i class="material-icons left">library_books</i>Libros</a></li>
+          <li><a href="{% url 'App:indexA' %}"><i class="material-icons right">perm_identity</i>Autores</a></li>
+        </ul>
+      </div>
+    </nav>
+    </header>
+    <main class="#e0e0e0 grey lighten-2">
+
+      <div class="row">
+        <div class="col s5"><br><br><br>
+          <div class="medium card">
+            <div class="card-image ">
+              {% load staticfiles %}
+              <img src="{% static 'App/images/autor.jpg' %}"/>
+              <span class="card-title">Bilioteca Cesun Universidad</span>
+            </div>
+            <div class="card-content ">
+              <p>Bienvenido a nuestra pagina de autores, aqui podras buscar de mandera facil
+                y rapida los autores con mayor reconocimiento a nivel internacional que con sus obras han logrado insipirar a millones de personas.</p>
+            </div>
+            <div class="card-action ">
+              <a href="#">Bienvenido!</a>
+            </div>
+          </div>
+        </div>
+
+          <div class="col s4 offset-s2">
+
+            <ul class="pagination col s9  offset-s4">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active #212121 grey darken-4"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+          </ul>
+
+                <table class="striped ">
+                  <thead>
+                    <tr>
+                        <th data-field="id">Nombre</th>
+                        <th data-field="id">Nuevo</th>
+                        <th data-field="id">Editar</th>
+                        <th data-field="id">Eliminar</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {% if all_autores %}
+
+                    {% for autor in all_autores %}
+                    <tr>
+                      <td>
+                         <a href="{% url 'App:detailA' autor.id %}">{{autor.Nombre}}</a>
+                        </td>
+                        <td>
+                          <a href="{%url 'App:crearA' %}" ><i class="small material-icons">queue</i></a>
+                      </td>
+                      <td>
+                        <a href="{%url 'App:editarA' autor.id %}" ><i class="small material-icons">mode_edit</i></a>
+                    </td>
+                    <td>
+                      <a href="{%url 'App:borrarA' autor.id %}"><i class="small material-icons">delete</i></a>
+                  </td>
+                    </tr>
+                      {% endfor %}
+                      {% else %}
+                        <h3>No existe un Autor</h3>
+                      {% endif %}
+                  </tbody>
+                </table>
+          </div>
+        </div>
+
+    </main>
+
+
+    <footer class="#d7ccc8 brown lighten-4">
+              <footer class="page-footer #757575 grey darken-1">
+                <div class="container">
+                  <div class="row">
+                    <div class="col l6 s12">
+                      <h5 class="white-text">Sánchez Bravo Fernando</h5>
+                      <p class="grey-text text-lighten-4">INGENIERIA EN DESARROLLO DE SOFTWARE.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                      <h5 class="white-text">06-IDVA</h5>
+                      <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Modelado y Arquitectura de software</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container">
+                  © 2016 MAKE IT EASY
+                  <a class="grey-text text-lighten-4 right" href="#!">Proyecto Unidad 2</a>
+                  </div>
+                </div>
+              </footer>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>
